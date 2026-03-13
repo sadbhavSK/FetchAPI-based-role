@@ -2,8 +2,8 @@ import Login from "./pages/Login"
 import Admin from "./pages/Admin"
 import User from "./pages/User"
 import Manager from "./pages/Manager"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
 
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import ProtectedRoute from "./components/ProtectedRoute"
 
@@ -11,36 +11,41 @@ function App(){
     return(
         <BrowserRouter>
         <Routes>
-            <Route path = "/" element = {<Login />}/>
+
+            <Route path="/" element={<Login />} />
+
             <Route
                 path="/admin"
                 element={
-                    <ProtectedRoute allowRole= "admin">
+                    <ProtectedRoute allowRole="admin">
                         <Admin />
                     </ProtectedRoute>
                 }
-                />
+            />
 
-                <Route
+            <Route
                 path="/manager"
                 element={
-                    <ProtectedRoute allowRole= "manager">
+                    <ProtectedRoute allowRole="manager">
                         <Manager />
                     </ProtectedRoute>
                 }
-                />
+            />
 
-                <Route
+            <Route
                 path="/user"
                 element={
-                    <ProtectedRoute allowesRole= "user">
+                    <ProtectedRoute allowRole="user">
                         <User />
                     </ProtectedRoute>
                 }
-                />
-            
+            />
+
+            <Route path="*" element={<Login />} />
+
         </Routes>
         </BrowserRouter>
     )
 }
-export default App();
+
+export default App
